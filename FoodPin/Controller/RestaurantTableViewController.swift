@@ -22,7 +22,7 @@ class RestaurantTableViewController: UITableViewController, UISearchResultsUpdat
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadRestaurants()
+        
         if restaurants.isEmpty {
             Restaurant.generateData(sourceArray: &restaurants)
         }
@@ -246,27 +246,7 @@ class RestaurantTableViewController: UITableViewController, UISearchResultsUpdat
     }
 
     
-    func saveRestaurants() {
-        let encoder = PropertyListEncoder()
-        do {
-            let data = try encoder.encode(restaurants)
-            try data.write(to: dataFilePath(), options: Data.WritingOptions.atomic)
-        } catch {
-            print("Error encoding restaurant array: \(error.localizedDescription)")
-        }
-    }
-    
-    func loadRestaurants() {
-        let path = dataFilePath()
-        if let data = try? Data(contentsOf: path) {
-            let decoder = PropertyListDecoder()
-            do {
-                restaurants = try decoder.decode([Restaurant].self, from: data)
-            } catch {
-                print("Error decoding restaurant array: \(error.localizedDescription)")
-            }
-        }
-    }
+
     
     // MARK: - Search bar none core data version
     

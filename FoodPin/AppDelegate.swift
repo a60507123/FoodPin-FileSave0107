@@ -72,7 +72,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
            //let navigationController = window!.rootViewController as! UINavigationController
            let controller = navigationController.viewControllers[0] as! RestaurantTableViewController
            //or navigationController.topViewController
-           controller.saveRestaurants()
+           
        }
 
 }
